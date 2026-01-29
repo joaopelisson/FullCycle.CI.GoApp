@@ -15,12 +15,11 @@ jobs:
       - run: go test
       - run: go run math.go
 
-      # NOT NEED IN THIS WORKFLOW FOR NOW
-      # - name: Login to Docker Hub
-      #   uses: docker/login-action@v3
-      #   with:
-      #     username: ${{ vars.DOCKERHUB_USERNAME }}
-      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
         
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -32,5 +31,5 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v6
         with:
-          push: false
+          push: true
           tags: joaopelisson/fullcycle.ci.goapp:latest
