@@ -4,14 +4,16 @@ on:
     branches:
       - develop
 
-      
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: ['1.25.5','1.25.6']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
-          go-version: 1.25.6
+          go-version: ${{ matrix.go-version }}
       - run: go test
       - run: go run math.go
