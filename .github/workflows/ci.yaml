@@ -33,4 +33,4 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: false
-          tags: joaopelisson/FullCycle.CI.GoApp:latest
+          tags: joaopelisson/fullcycle.ci.goapp:latest
